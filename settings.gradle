@@ -1,0 +1,4 @@
+rootProject.name='MyDex'
+include ':app'
+include ':mylibrary'
+include ':mylibrary2'
