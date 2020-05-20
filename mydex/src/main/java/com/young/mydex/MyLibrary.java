@@ -1,10 +1,8 @@
-package com.young.mylibrary;
-
-import com.young.mydex.Dynamic;
+package com.young.mydex;
 
 public class MyLibrary implements Dynamic {
     @Override
     public String sayHello() {
-        return "ni hao";
+        return "zhe ge lei shi my library";
     }
 }

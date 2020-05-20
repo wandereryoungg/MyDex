@@ -39,12 +39,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadDex() {
         File cacheDir = FileUtil.getCacheDir(this);
-        String desPath = cacheDir.getAbsolutePath() + File.separator + "mylibrary_dex.jar";
+        String desPath = cacheDir.getAbsolutePath() + File.separator + "mydex_dex.jar";
         File desFile = new File(desPath);
-        FileUtil.copyFile(this, "mylibrary_dex.jar", desFile);
+        FileUtil.copyFile(this, "mydex_dex.jar", desFile);
         DexClassLoader classLoader = new DexClassLoader(desPath, cacheDir.getAbsolutePath(), null, getClassLoader());
         try {
-            Dynamic dynamic = (Dynamic) classLoader.loadClass("com.young.mylibrary.MyLibrary").newInstance();
+            Class clazz = classLoader.loadClass("com.young.mydex.MyLibrary");
+            Dynamic dynamic = (Dynamic) clazz.newInstance();
             Toast.makeText(this, dynamic.sayHello(), Toast.LENGTH_SHORT).show();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
